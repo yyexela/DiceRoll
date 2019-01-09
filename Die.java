@@ -4,17 +4,17 @@ public class Die{
     private int max;
     private boolean loaded;
     private int loadedNum;
-    private double loadedProb;
+    private int multiplier;
     
     public Die(int max){
         this.max = max;
         roll();
     }
 
-    public Die(int max, boolean loaded, int loadedNum, double loadedProb){
+    public Die(int max, boolean loaded, int loadedNum, int multiplier){
         this.max = max;
         this.loaded = loaded;
-        this.loadedProb = loadedProb;
+        this.multiplier = multiplier;
         this.loadedNum = loadedNum;
         roll();
     }
@@ -23,8 +23,18 @@ public class Die{
         value = (int) (Math.random() * (max) ) + 1;
         rolls++;
         if(loaded){
-            int num = (int) (Math.random() * (max) ) + 1;
-            if(num <= (max * (loadedProb))) value = loadedNum;
+            int[] values = new int[max + multiplier];
+            for (int i =0; i < values.length; i++){
+                if ( i < max){
+                    values[i]=i+1;
+                }
+                else values[i]=loadedNum;
+            }
+
+            int index = (int) (Math.random() * (max+multiplier) );
+            value = values[index];
+
+            
         }
     }
 
@@ -48,8 +58,8 @@ public class Die{
         this.loadedNum = loadedNum;
     }
 
-    public void setLoadedProb(double loadedProb){
-        this.loadedProb = loadedProb;
+    public void setMultiplier(int multiplier){
+        this.multiplier = multiplier;
     }
 
     public boolean isEqual(Die die2){

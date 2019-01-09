@@ -25,10 +25,13 @@ public class DieTester{
 
         */
 
-        Die dieLoaded = new Die(6, true, 4, 0);
+        Die dieLoaded = new Die(6, true, 4, 3);
+        Die dieLoaded1 = new Die(6, true, 4, 0);
+        
         Die dieNormal = new Die(6);
-
+      
         graph1D(10000, dieLoaded);
+         graph1D(10000, dieLoaded1);
         graph1D(10000, dieNormal);
 
         //graph2D(10);
@@ -99,7 +102,7 @@ public class DieTester{
 
         for(int i = 0; i < rolls.length; i++){
             String complete = (i+1) + "|";
-            double percentage = (double) rolls[i] / rollAmount * 10;
+            double percentage = (double) rolls[i] / rollAmount * 20;
             //System.out.println("percentage: " + percentage);
             for(int j = 0; j < percentage; j++){
                 complete += "X";
