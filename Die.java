@@ -23,20 +23,22 @@ public class Die{
         value = (int) (Math.random() * (max) ) + 1;
         rolls++;
         if(loaded){
-            int[] values = new int[max + multiplier];
-            for (int i =0; i < values.length; i++){
-                if ( i < max){
-                    values[i]=i+1;
-                }
-                else values[i]=loadedNum;
+            double ogProb = 1.0/max;
+            double otherProb = 1.0/(max-1.0+multiplier);
+            double loadedProb = 1.0-(max-1.0)*otherProb;
+            double rand = (Math.random())+otherProb;
+            double whole = rand/otherProb;
+            if (whole >= max){
+                value = loadedNum;
             }
-
-            int index = (int) (Math.random() * (max+multiplier) );
-            value = values[index];
-
-            
+            else {
+                value = (int) whole;
+            }
         }
+    
     }
+
+    
 
     public int getValue(){
         return value;

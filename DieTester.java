@@ -26,12 +26,14 @@ public class DieTester{
         */
 
         Die dieLoaded = new Die(6, true, 4, 3);
-        Die dieLoaded1 = new Die(6, true, 4, 0);
+        Die dieLoaded1 = new Die(6, true, 4, 1);
+         Die dieLoaded2 = new Die(6, true, 4, 0);
         
         Die dieNormal = new Die(6);
       
         graph1D(10000, dieLoaded);
          graph1D(10000, dieLoaded1);
+          graph1D(10000, dieLoaded2);
         graph1D(10000, dieNormal);
 
         //graph2D(10);
@@ -96,7 +98,7 @@ public class DieTester{
         for(int i = 0; i < rollAmount; i++){
             die1.roll();
             //System.out.println(die1.getValue());
-            rolls[die1.getValue()-1]++;
+            rolls[die1.getValue()-1]++; 
         }
         System.out.println("1: " + rolls[0] + ", 2: " + rolls[1] + ", 3: " + rolls[2] + ", 4: " + rolls[3] + ", 5: " + rolls[4] + ", 6: " + rolls[5]);
 
@@ -110,4 +112,6 @@ public class DieTester{
             System.out.println(complete);
         }
     }
+
+    //public static boolean isLoaded()
 }
