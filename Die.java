@@ -8,34 +8,50 @@ public class Die{
     
     public Die(int max){
         this.max = max;
+        this.loaded = false;
         roll();
     }
 
-    public Die(int max, boolean loaded, int loadedNum, int multiplier){
+    public Die(int max, int loadedNum, int multiplier){
         this.max = max;
-        this.loaded = loaded;
+        this.loaded = true;
         this.multiplier = multiplier;
         this.loadedNum = loadedNum;
         roll();
     }
 
     public void roll(){
-        value = (int) (Math.random() * (max) ) + 1;
-        rolls++;
-        if(loaded){
-            int[] values = new int[max + multiplier];
-            for (int i =0; i < values.length; i++){
-                if ( i < max){
-                    values[i]=i+1;
-                }
-                else values[i]=loadedNum;
+        //System.out.println("loadedNum: " + loadedNum + ", max: " + max);
+        if(!loaded){
+            value = (int) (Math.random() * (max) ) + 1;
+            rolls++;
+        } else {
+            int[] values = new int[max -1 + multiplier];
+            for (int num = 1, index = 0; index < values.length; index++, num++){
+                if(num <= max){
+                    if(num == loadedNum){
+                        num++;
+                    }
+                    values[index] = num;
+                } else {
+                    values[index] = loadedNum;
+                }   
             }
 
-            int index = (int) (Math.random() * (max+multiplier) );
-            value = values[index];
+            //print array
+            /*
+            String complete = "";
+            for(int i = 0; i < values.length; i++){
+                complete += " " + values[i];
+            }
+            System.out.println(complete);
+            */
 
+            int index = (int) (Math.random() * (max+multiplier-1) );
+            value = values[index];
             
         }
+        //System.out.println("END ROLL");
     }
 
     public int getValue(){
