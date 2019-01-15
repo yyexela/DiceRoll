@@ -5,6 +5,9 @@ public class Die{
     private boolean loaded;
     private int loadedNum;
     private int multiplier;
+
+    //Random object
+    private Random random;
     
     public Die(int max){
         this.max = max;
@@ -18,10 +21,13 @@ public class Die{
         this.multiplier = multiplier;
         this.loadedNum = loadedNum;
         roll();
+        //Random seed
+        this.random = new Random();
     }
 
+    //Math.random
+    /*
     public void roll(){
-        //System.out.println("loadedNum: " + loadedNum + ", max: " + max);
         if(!loaded){
             value = (int) (Math.random() * (max) ) + 1;
             rolls++;
@@ -38,20 +44,35 @@ public class Die{
                 }   
             }
 
-            //print array
-            /*
-            String complete = "";
-            for(int i = 0; i < values.length; i++){
-                complete += " " + values[i];
-            }
-            System.out.println(complete);
-            */
-
             int index = (int) (Math.random() * (max+multiplier-1) );
             value = values[index];
             
         }
-        //System.out.println("END ROLL");
+    }
+    */
+
+    //Random();
+    public void roll(){
+        if(!loaded){
+            value = random.nextInt(max) + 1;
+            rolls++;
+        } else {
+            int[] values = new int[max -1 + multiplier];
+            for (int num = 1, index = 0; index < values.length; index++, num++){
+                if(num <= max){
+                    if(num == loadedNum){
+                        num++;
+                    }
+                    values[index] = num;
+                } else {
+                    values[index] = loadedNum;
+                }   
+            }
+
+            int index = random.nextInt(max+multiplier-1) + 1;
+            value = values[index];
+            
+        }
     }
 
     public int getValue(){

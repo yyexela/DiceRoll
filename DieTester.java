@@ -8,6 +8,8 @@ public class DieTester{
         //testGraph3D();
         //testDieLoaded();
         //testDieBag();
+        //testSumOfFive();
+        testDieBagPatterns();
 
         /**Two ways to implement the game where you roll five die:
         1.) Write a function that rolls the die 5 times and sums them together to return a 
@@ -17,9 +19,29 @@ public class DieTester{
         */
     }
 
-    public static void testDieBag(){
+    public static void testDieBagPatterns(){
+        System.out.println("Making 5 die with a max of 6");
         DieBag dieBag = new DieBag(5, 6);
-        System.out.println(dieBag.getValue());
+        System.out.println(dieBag);
+        //dieBag.twoOfAKind();
+        dieBag.threeOfAKind();
+    }
+
+    public static void testSumOfFive(){
+        System.out.println("Making 1 die with a max of 6");
+        Die die1 = new Die(6);
+        int sum = 0;
+        for(int i = 0; i < 5; i++){
+            die1.roll();
+            sum += die1.getValue();
+        }
+        System.out.println("Sum of 5 rolls: " + sum);
+    }
+
+    public static void testDieBag(){
+        System.out.println("Making 5 die with a max of 6");
+        DieBag dieBag = new DieBag(5, 6);
+        System.out.println("Sum of 5 die: " + dieBag.getValue());
     }
 
     public static void testDieLoaded(){
