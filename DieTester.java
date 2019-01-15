@@ -9,7 +9,10 @@ public class DieTester{
         //testDieLoaded();
         //testDieBag();
         //testSumOfFive();
-        testDieBagPatterns();
+        //System.out.println(testDieBagTwoOfAKind());
+        //System.out.println(testDieBagThreeOfAKind());
+        System.out.println(testDieBagTwoPairs());
+        //System.out.println(testDieBagFullHouse());
 
         /**Two ways to implement the game where you roll five die:
         1.) Write a function that rolls the die 5 times and sums them together to return a 
@@ -19,12 +22,39 @@ public class DieTester{
         */
     }
 
-    public static void testDieBagPatterns(){
+    public static boolean testDieBagFullHouse(){
+        System.out.println("Making 5 die with a max of 6");
+        DieBag dieBag = new DieBag(5, 6);
+        dieBag.setValue(1, 4);
+        dieBag.setValue(2, 3);
+        dieBag.setValue(3, 4);
+        dieBag.setValue(4, 4);
+        dieBag.setValue(5, 3);
+
+        System.out.println(dieBag);
+        return dieBag.fullHouse();
+    }
+
+    public static boolean testDieBagTwoPairs(){
         System.out.println("Making 5 die with a max of 6");
         DieBag dieBag = new DieBag(5, 6);
         System.out.println(dieBag);
-        //dieBag.twoOfAKind();
-        dieBag.threeOfAKind();
+        return dieBag.twoPairs();
+    }
+
+
+    public static boolean testDieBagThreeOfAKind(){
+        System.out.println("Making 5 die with a max of 6");
+        DieBag dieBag = new DieBag(5, 6);
+        System.out.println(dieBag);
+        return dieBag.threeOfAKind();
+    }
+
+    public static boolean testDieBagTwoOfAKind(){
+        System.out.println("Making 5 die with a max of 6");
+        DieBag dieBag = new DieBag(5, 6);
+        System.out.println(dieBag);
+        return dieBag.twoOfAKind();
     }
 
     public static void testSumOfFive(){

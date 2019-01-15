@@ -7,7 +7,7 @@ public class Die{
     private int multiplier;
 
     //Random object
-    private Random random;
+    //private Random random;
     
     public Die(int max){
         this.max = max;
@@ -22,11 +22,10 @@ public class Die{
         this.loadedNum = loadedNum;
         roll();
         //Random seed
-        this.random = new Random();
+        //this.random = new Random();
     }
 
     //Math.random
-    /*
     public void roll(){
         if(!loaded){
             value = (int) (Math.random() * (max) ) + 1;
@@ -49,8 +48,8 @@ public class Die{
             
         }
     }
-    */
 
+/*
     //Random();
     public void roll(){
         if(!loaded){
@@ -74,6 +73,7 @@ public class Die{
             
         }
     }
+*/
 
     public int getValue(){
         return value;
@@ -85,6 +85,10 @@ public class Die{
 
     public int getMax(){
         return max;
+    }
+
+    public void setValue(int value){
+        this.value = value;
     }
 
     public void setLoaded(boolean value){
