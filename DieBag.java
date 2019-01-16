@@ -3,6 +3,8 @@ public class DieBag{
     private int amount;
     private Die[] die;
 
+//convert to an array list
+
     public DieBag(int amount, int max){
         this.max = max;
         this.amount = amount;

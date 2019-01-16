@@ -25,6 +25,19 @@ public class Die{
         //this.random = new Random();
     }
 
+
+    /*
+    ArrayList<String> list = new ArrayList<string>();
+    list.add("newstring");
+    list.get(0);
+    list.size();
+    array lists cannot directly hold integer
+    Wrapper:
+    ArrayList <integer> nums = new ArrayList<Integer>();
+    nums.add(new Integer(5));
+    int x = nums.get(0).value();
+    
+    */
     //Math.random
     public void roll(){
         if(!loaded){
